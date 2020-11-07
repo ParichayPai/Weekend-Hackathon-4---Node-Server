@@ -10,16 +10,21 @@ const contacts = [
 ];
 
 function handleServer(req, res) {
-  if (req.url === "/welcome") {
-    res.writeHead(200).write("Welcome to Dominos!");
-    res.end();
-  } else if (req.url === "/contact") {
-    res.writeHead(200).write(JSON.stringify(contacts));
-    res.end();
-  } else {
-    res.writeHead(404).end("page not found");
-    res.end();
-  }
+    if(req.url==="/welcome"){
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "text/plain");
+        //res.writeHead(200).write();
+        res.end("Welcome to Dominos!");
+    }
+    else if(req.url==="/contact"){
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        //res.writeHead(200).write(JSON.stringify(obj));
+        res.end(JSON.stringify(contacts));
+    }
+    else{
+        res.writeHead(404).end("page not found");
+    }
 }
 
 httpServer.listen(8081);
