@@ -1,4 +1,4 @@
-var http = require("http");
+const http = require("http");
 
 const httpServer = http.createServer(handleServer);
 
@@ -11,15 +11,21 @@ const contacts = [
 
 function handleServer(req, res) {
   if (req.url === "/welcome") {
-    res.status(200).send("Welcome to Dominos!");
-    return;
+    res.statusMessage = "200";
+    res.write("Welcome to Dominos!");
+    res.end();
+    // return;
   } else if (req.url === "/contact") {
-    res.status(200).send(contacts);
-    return;
+    res.statusMessage = "200";
+    res.write(JSON.stringify(contacts));
+    res.end();
+    // return;
   } else {
-    res.status(400);
+    res.statusMessage = "400";
+    console.log(res.statusMessage);
+    res.end();
+    // return;
   }
 }
 
 httpServer.listen(8081);
-module.exports = httpServer;
