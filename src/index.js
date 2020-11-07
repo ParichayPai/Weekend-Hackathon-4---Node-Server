@@ -2,13 +2,6 @@ const http = require("http");
 
 const httpServer = http.createServer(handleServer);
 
-const contacts = [
-  {
-    phone: "18602100000",
-    email: "guestcaredominos@jublfood.com"
-  }
-];
-
 function handleServer(req, res) {
     if(req.url==="/welcome"){
         res.statusCode = 200;
@@ -17,10 +10,14 @@ function handleServer(req, res) {
         res.end("Welcome to Dominos!");
     }
     else if(req.url==="/contact"){
+        const obj={
+            phone: '18602100000',
+            email: 'guestcaredominos@jublfood.com'
+        };
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         //res.writeHead(200).write(JSON.stringify(obj));
-        res.end(JSON.stringify(contacts));
+        res.end(JSON.stringify(obj));
     }
     else{
         res.writeHead(404).end("page not found");
