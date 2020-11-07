@@ -17,7 +17,7 @@ function handleServer(req, res) {
     res.writeHead(200).write(JSON.stringify(contacts));
     res.end();
   } else {
-    res.writeHead(400);
+    res.writeHead(404).end("page not found");
     res.end();
   }
 }
