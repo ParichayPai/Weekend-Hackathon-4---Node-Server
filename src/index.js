@@ -14,17 +14,14 @@ function handleServer(req, res) {
     res.statusMessage = "200";
     res.write("Welcome to Dominos!");
     res.end();
-    // return;
   } else if (req.url === "/contact") {
     res.statusMessage = "200";
     res.write(JSON.stringify(contacts));
     res.end();
-    // return;
   } else {
     res.statusMessage = "400";
     console.log(res.statusMessage);
     res.end();
-    // return;
   }
 }
 
